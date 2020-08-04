@@ -284,10 +284,26 @@ select EmployeeID, FirstName, LastName from Employees
   單價與產品平均單價的「價差」。
  */ 
 select CategoryID, ProductID, UnitPrice, 
-  (select Avg(UnitPrice) from products as i 
-    where CategoryID = o.CategoryID) as AvgPrice,
-  UnitPrice - (select Avg(UnitPrice) from products as I 
-    where CategoryID = o.CategoryID) as DiffPrice
-  from products as o
-  order by CategoryID, ProductID
+(select Avg(UnitPrice) from products as i where CategoryID = o.CategoryID)as AvgPrice,
+UnitPrice - (select Avg(UnitPrice) from products as I where CategoryID = o.CategoryID) as DiffPrice
+from products as o
+order by CategoryID, ProductID
 
+
+
+
+
+
+
+select DISTINCT s.customerid ,CompanyName ,p.productid ,productname
+from customers s 
+JOIN orders o on o.CustomerID = s.CustomerID 
+join `order details` od on od.orderid = o.OrderID 
+join products p on p.ProductID = od.productid
+order by s.CustomerID ,p.ProductID
+
+select * from (
+  select * from orders
+  order by 
+
+)
