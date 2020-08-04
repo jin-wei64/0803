@@ -160,6 +160,18 @@ select productID,(SELECT p.CategoryID) ,productname,unitprice - (select avg(unit
 
 select categoryid ,productID,(p.CategoryID) ,productname,unitprice - (select avg(unitprice) from products where categoryid = p.CategoryID ) as diffprice from products as p
 
+
+select CONCAT("FirstName","TitleOfCourtesy") from `products`
+
+select productid,orderid,sum(quantity)from`order details`group by productid,orderid with rollup
+https://www.itread01.com/content/1545330096.html
+
+select productid,productname ,k.SupplierID
+from products a JOIN suppliers K
+on a.ProductID = k.supplierid 
+order by a.ProductID
+
+
 按照員工資料表(employees)的內容, 請查出一共有幾位員工?
  */
 SELECT COUNT(*) FROM employees
