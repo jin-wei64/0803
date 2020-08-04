@@ -158,12 +158,9 @@ select avg(unitprice) from products
 
 select productID,(SELECT p.CategoryID) ,productname,unitprice - (select avg(unitprice) from products where categoryid = p.CategoryID ) as diffprice from products as p ;
 
+select categoryid ,productID,(p.CategoryID) ,productname,unitprice - (select avg(unitprice) from products where categoryid = p.CategoryID ) as diffprice from products as p
 
-
-
-
-/* 310
-  按照員工資料表(employees)的內容, 請查出一共有幾位員工?
+按照員工資料表(employees)的內容, 請查出一共有幾位員工?
  */
 SELECT COUNT(*) FROM employees
 
