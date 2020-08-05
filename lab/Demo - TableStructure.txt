@@ -1,4 +1,4 @@
-﻿create database workout;
+﻿create database workout default character utf8;
 use workout;
 
 -- 建立資料表
@@ -28,4 +28,46 @@ describe friends;
 
 -- -- 修改資料表結構 - 刪除欄位
 alter table friends
-  drop column email;
+drop column email;
+
+
+
+
+
+drop table t1 ;
+
+create table t1 (id int null .data int null) ;
+insert into t1 (id , data) value (1 ,100),(2 ,100) ;
+insert into t1 (id ,data) value (1 ,100);
+
+select * from t1 ; 
+
+
+alter table t1 add tempId int auto_increment primary key ; // need primary key
+
+
+
+___________
+
+drop table t1 ;
+create table t1 (
+  id int not null primary key ,
+  data int null
+  ) ;
+insert into t1 (id , data) value (1 ,100),(2 ,100) ;
+insert into t1 (id ,data) value (1 ,100);
+
+
+_________________
+
+drop table t1 ;
+create table t1 (
+  id int not null ,
+  data int null
+  primary key(id)
+  ) ;
+//可一次性給多個欄位primary key 
+insert into t1 (id , data) value (1 ,100),(2 ,100) ;
+insert into t1 (id ,data) value (1 ,100);
+create index t1index on t1 (id); 
+
