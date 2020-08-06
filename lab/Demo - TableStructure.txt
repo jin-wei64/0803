@@ -76,3 +76,56 @@ create index t1index on t1 (id);
 
 drop index t1index on t1 ;
 
+
+-------------------------
+alter table t1 add constraint chk_data check(true/false)
+
+
+alter table t1 drop constraint chk_data 
+set sql_mode = 'traditional';
+create table t1(id int primary key ,data int);
+alter table t1 add constraint chk_data check(data>=0);
+insert into t1 (id ,data) value (1,100);
+insert into t1 (id ,data) value (2,-100);
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+
+use workout;
+
+
+create table customer (customerid int primary key,companyname varchar(20));
+create table orders (orderid int primary key ,customerid int);
+
+alter table orders add constraint fk_customer_orders 
+foreign key (customerid)references customer (customerid) 
+on update cascade
+on delete cascade;
+
+
+insert into customer value(1,'AAA'),(2,'bbbb'),(3,'ccc');
+insert into orders value(1,1),(2,1),(3,2);
+select * from customer;
+
+
+
+//unique (不只一個欄位)
+alter table customer add constraint uc unique (companyname);
+insert into customer value (4,'aaa');
+
+//唯一性索引 加上unique
+create unique index idx_company on customer (companyname);
+insert into customer value (4,'aaa');
+drop index idx_company on customer;
+
+
+//alter table customer drop constraint uc ; (err)
+ALTER TABLE `orders` DROP INDEX `fk_customer_orders`;
+
+show variable like 'data%';
++---------------+--------------------------------+
+| Variable_name | Value                          |
++---------------+--------------------------------+
+| datadir       | /Applications/MAMP/db/mysql57/ |
++---------------+--------------------------------+
+1 row in set (0.00 sec)
+

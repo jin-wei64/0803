@@ -46,10 +46,10 @@ set password for carl = password('Pa$$w0rd');
 select customerID, companyName from northwind.customers;
 
 
--- 授予 carl 可以查詢 northwind 資料庫的所有資料表
+-- 授予 carl 可表
 -- 觀察各個記錄權限的資料表有何變化.
 grant select on northwind.* to carl;
-select host, db, user, select_priv, insert_priv, update_priv from db;
+select host, db, user, select_priv, insert_priv以查詢 northwind 資料庫的所有資料, update_priv from db;
 select host, db, user, table_name, table_priv from tables_priv;
 
 
@@ -87,3 +87,80 @@ select host, db, user, select_priv, insert_priv, update_priv from db;
 select host, db, user, table_name, table_priv from tables_priv;
 select user, host, password from user;
 
+
+
+
+
++---------------+-----------+------------------+  
+| user          | host      | password_expired |
++---------------+-----------+------------------+
+| root          | localhost | N                |
+| mysql.session | localhost | N                |
+| mysql.sys     | localhost | N                |
+| mamp          | localhost | N                |
+| root          | 127.0.0.1 | N                |
+| root          | ::1       | N                |
++---------------+-----------+------------------+
+
++---------------+-----------+------------------+
+| user          | host      | password_expired |
++---------------+-----------+------------------+
+| root          | localhost | N                |
+| mysql.session | localhost | N                |
+| mysql.sys     | localhost | N                |
+| mamp          | localhost | N                |
+| root          | 127.0.0.1 | N                |
+| root          | ::1       | N                |
+| carl          | %         | N                |
++---------------+-----------+------------------+
+
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| host      | db                 | user          | select_priv | insert_priv | update_priv |
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| localhost | performance_schema | mysql.session | Y           | N           | N           |
+| localhost | sys                | mysql.sys     | N           | N           | N           |
++-----------+--------------------+---------------+-------------+-------------+-------------+
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| host      | db                 | user          | select_priv | insert_priv | update_priv |
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| localhost | performance_schema | mysql.session | Y           | N           | N           |
+| localhost | sys                | mysql.sys     | N           | N           | N           |
++-----------+--------------------+---------------+-------------+-------------+-------------+
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| host      | db                 | user          | select_priv | insert_priv | update_priv |
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| localhost | performance_schema | mysql.session | Y           | N           | N           |
+| localhost | sys                | mysql.sys     | N           | N           | N           |
+| %         | northwind          | carl          | Y           | N           | N           |
++-----------+--------------------+---------------+-------------+-------------+-------------+
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| host      | db                 | user          | select_priv | insert_priv | update_priv |
++-----------+--------------------+---------------+-------------+-------------+-------------+
+| localhost | performance_schema | mysql.session | Y           | N           | N           |
+| localhost | sys                | mysql.sys     | N           | N           | N           |
+| %         | northwind          | carl          | Y           | N           | Y           |
++-----------+--------------------+---------------+-------------+-------------+-------------+
++-----------+-------+---------------+------------+------------+
+| host      | db    | user          | table_name | table_priv |
++-----------+-------+---------------+------------+------------+
+| localhost | mysql | mysql.session | user       | Select     |
+| localhost | sys   | mysql.sys     | sys_config | Select     |
++-----------+-------+---------------+------------+------------+
++-----------+-------+---------------+------------+------------+
+| host      | db    | user          | table_name | table_priv |
++-----------+-------+---------------+------------+------------+
+| localhost | mysql | mysql.session | user       | Select     |
+| localhost | sys   | mysql.sys     | sys_config | Select     |
++-----------+-------+---------------+------------+------------+
++-----------+-------+---------------+------------+------------+
+| host      | db    | user          | table_name | table_priv |
++-----------+-------+---------------+------------+------------+
+| localhost | mysql | mysql.session | user       | Select     |
+| localhost | sys   | mysql.sys     | sys_config | Select     |
++-----------+-------+---------------+------------+------------+
++-----------+-------+---------------+------------+------------+
+| host      | db    | user          | table_name | table_priv |
++-----------+-------+---------------+------------+------------+
+| localhost | mysql | mysql.session | user       | Select     |
+| localhost | sys   | mysql.sys     | sys_config | Select     |
++-----------+-------+---------------+------------+------------+
