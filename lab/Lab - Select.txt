@@ -310,4 +310,11 @@ select * from (
 
 
 
-//lock in share mode;
+//lock in share mode; for upate
+
+
+ex : select * from products where lock in share mode ;
+
+or select * from products where for update ;
+
+//https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/186026/
