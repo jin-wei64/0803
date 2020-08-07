@@ -15,4 +15,9 @@ insert into Lab (data) values ('x');
 insert into Lab (data) values ('n');
 insert into Lab (data2) values (10);
 
+
+show  data+0
+
 select id, concat('*', data, '*') as DataField from Lab;
+
+//select data+0 from lab;

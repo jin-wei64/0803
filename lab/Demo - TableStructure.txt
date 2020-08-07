@@ -1,4 +1,5 @@
 ﻿create database workout default character utf8;
+//create database test default character set utf8;
 use workout;
 
 -- 建立資料表

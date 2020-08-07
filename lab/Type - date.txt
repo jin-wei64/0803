@@ -5,8 +5,8 @@ drop table Lab;
 create table Lab
 (
   id int auto_increment primary key,
-  data datetime not null,
-  data2 timestamp
+  data datetime not null, //沒設定內如為空
+  data2 timestamp //沒設定內容會自動填入目前時間
 );
 
 -- normal:
@@ -14,8 +14,10 @@ insert into Lab (data) values ('2006-02-28');
 insert into Lab (data) values ('2006-02-28 16:30:00');
 insert into Lab (data) values ('2006-1-31');
 insert into Lab (data) values (current_date());
-insert into Lab (data) values (current_timestamp());
+insert into Lab (data) values (current_timestamp());//包含秒
 -- watch out:
+insert into Lab (data) values (current_time()); //只有時間沒日期
+
 insert into Lab (data) values ('2006-02-29');
 insert into Lab (data) values ('2006-00-31');
 insert into Lab (data) values ('0000-00-00');

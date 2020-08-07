@@ -8,7 +8,12 @@ create table Lab
   data int(5) zerofill not null
 );
 
+insert into lab (data) value ('123');
+insert into lab (data) value('1234567');
+insert into lab (data) va;ue (' 12 ');
+
 insert into Lab (data) values (10);
 
 select * from Lab;
+
 
