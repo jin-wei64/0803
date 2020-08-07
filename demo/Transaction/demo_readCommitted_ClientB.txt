@@ -65,3 +65,7 @@ re mode;
 1 row in set (13.09 sec)
 
 mysql>
+
+
+
+mysqldump>>>>/Applications/MAMP/Library/bin/mysqldump -uroot -p --databases northwind;  
